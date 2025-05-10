@@ -49,7 +49,12 @@ func leComando() int {
 
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando...")
-	site := "https://www.alura.com.br/"
+	site := "https://httpbin.org/status/404" // ou 200
 	resp, _ := http.Get(site)
-	fmt.Println(resp)
+
+	if resp.StatusCode == 200 {
+		fmt.Println("Site:", site, "foi carregado com sucesso!")
+	} else {
+		fmt.Println("Site:", site, "está com problemas. Status Code:", resp.StatusCode)
+	}
 }
